@@ -1,0 +1,15 @@
+{
+  "logger": {
+    "prefix": "bob",
+    "level": "info",
+    "format": "%color=black%[%time%]%color=level%[%level%]%color=white%%message%%color=black%%stack_trace=error%",
+    "handlers": {
+      "stream": {
+        "type": "stream"
+      }
+    }
+  },
+  "stopwatch": {
+    "id": "Bob"
+  }
+}
