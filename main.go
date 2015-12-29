@@ -6,6 +6,7 @@ import (
 
 	"github.com/asticode/go-logger/logger"
 	extendederror "github.com/asticode/go-toolbox/error"
+	"github.com/asticode/go-stopwatch/stopwatch"
 )
 
 func main() {
@@ -48,5 +49,9 @@ func catchRun(err interface{}, args map[string]interface{}) {
 }
 
 func run(c configuration, l logger.Logger) {
-	l.Info("bite")
+	// Create stopwatch
+	s := stopwatch.NewStopwatchFromConfiguration(c.StopWatch).SetIsEnabled(true)
+	s.AddEvent("Init", "Stopwatch has been created")
+
+	l.Info(s.String())
 }
