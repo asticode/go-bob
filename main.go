@@ -9,6 +9,7 @@ import (
 	extendederror "github.com/asticode/go-toolbox/error"
 	"github.com/asticode/go-virtualkeyboard/virtualkeyboard"
 	"time"
+	"os/exec"
 )
 
 func main() {
@@ -78,6 +79,9 @@ func run(c configuration, l logger.Logger) {
 	// Write
 	vk.Write("Salut Quentin, tu vas bien ?")
 	sw.AddEvent("Second press", "")
+
+	// Open Explorer
+	fmt.Println(exec.Command("cmd", "/C explorer .").Output())
 
 	//>> TESTS END HERE <<\\
 
