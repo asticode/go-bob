@@ -5,8 +5,10 @@ import (
 	"fmt"
 
 	"github.com/asticode/go-logger/logger"
-	extendederror "github.com/asticode/go-toolbox/error"
 	"github.com/asticode/go-stopwatch/stopwatch"
+	extendederror "github.com/asticode/go-toolbox/error"
+	"github.com/asticode/go-virtualkeyboard/virtualkeyboard"
+	"time"
 )
 
 func main() {
@@ -50,8 +52,22 @@ func catchRun(err interface{}, args map[string]interface{}) {
 
 func run(c configuration, l logger.Logger) {
 	// Create stopwatch
-	s := stopwatch.NewStopwatchFromConfiguration(c.StopWatch).SetIsEnabled(true)
-	s.AddEvent("Init", "Stopwatch has been created")
+	sw := stopwatch.NewStopwatchFromConfiguration(c.StopWatch).SetIsEnabled(true)
+	sw.AddEvent("Init", "Stopwatch has been created")
 
-	l.Info(s.String())
+	//>> TESTS BEGIN HERE <<\\
+
+	// Create virtual keyboard
+	vk := virtualkeyboard.NewVirtualKeyboard().SetDelayBetweenPresses(time.Duration(50) * time.Millisecond)
+
+	// Sleep
+	time.Sleep(time.Duration(4) * time.Second)
+
+	// Press
+	fmt.Println(vk.Write("Salut Quentin, tu vas bien ?"))
+
+	//>> TESTS END HERE <<\\
+
+	// Log stopwatch
+	l.Info(sw.String())
 }
