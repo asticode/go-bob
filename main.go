@@ -60,11 +60,24 @@ func run(c configuration, l logger.Logger) {
 	// Create virtual keyboard
 	vk := virtualkeyboard.NewVirtualKeyboard().SetDelayBetweenPresses(time.Duration(50) * time.Millisecond)
 
-	// Sleep
-	time.Sleep(time.Duration(4) * time.Second)
+	// Switch focus and select all content
+	vk.Press(
+		// Switch focus
+		virtualkeyboard.Keys{
+			virtualkeyboard.KeyAlt,
+			virtualkeyboard.KeyTab,
+		},
+		// Select all
+		virtualkeyboard.Keys{
+			virtualkeyboard.KeyControl,
+			virtualkeyboard.KeyA,
+		},
+	)
+	sw.AddEvent("First press", "")
 
-	// Press
-	fmt.Println(vk.Write("Salut Quentin, tu vas bien ?"))
+	// Write
+	vk.Write("Salut Quentin, tu vas bien ?")
+	sw.AddEvent("Second press", "")
 
 	//>> TESTS END HERE <<\\
 
