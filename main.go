@@ -7,8 +7,7 @@ import (
 	"github.com/asticode/go-logger/logger"
 	"github.com/asticode/go-stopwatch/stopwatch"
 	extendederror "github.com/asticode/go-toolbox/error"
-	"github.com/asticode/go-virtualkeyboard/virtualkeyboard"
-	"time"
+	"github.com/asticode/go-keyboardemulator/keyboardemulator"
 	"os/exec"
 )
 
@@ -58,20 +57,20 @@ func run(c configuration, l logger.Logger) {
 
 	//>> TESTS BEGIN HERE <<\\
 
-	// Create virtual keyboard
-	vk := virtualkeyboard.NewVirtualKeyboard().SetDelayBetweenPresses(time.Duration(50) * time.Millisecond)
+	// Create keyboard emulator
+	vk := keyboardemulator.NewKeyboardEmulator().SetAddRealLifeDelayBetweenPresses(true)
 
 	// Switch focus and select all content
 	vk.Press(
 		// Switch focus
-		virtualkeyboard.Keys{
-			virtualkeyboard.KeyAlt,
-			virtualkeyboard.KeyTab,
+		keyboardemulator.Keys{
+			keyboardemulator.KeyAlt,
+			keyboardemulator.KeyTab,
 		},
 		// Select all
-		virtualkeyboard.Keys{
-			virtualkeyboard.KeyControl,
-			virtualkeyboard.KeyA,
+		keyboardemulator.Keys{
+			keyboardemulator.KeyControl,
+			keyboardemulator.KeyA,
 		},
 	)
 	sw.AddEvent("First press", "")

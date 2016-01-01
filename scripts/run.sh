@@ -12,4 +12,4 @@ $ROOT_DIR/scripts/build/core.sh
 
 # Run
 echo "Running..."
-$GOPATH/bin/go-bob -config="$GOPATH/config/bob.json"
+$GOPATH/bin/go-bob -config="$GOPATH/bin/bob.json"
