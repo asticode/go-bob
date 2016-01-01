@@ -8,7 +8,7 @@ import (
 	"github.com/asticode/go-stopwatch/stopwatch"
 	extendederror "github.com/asticode/go-toolbox/error"
 	"github.com/asticode/go-keyboardemulator/keyboardemulator"
-	"os/exec"
+	_ "os/exec"
 )
 
 func main() {
@@ -76,14 +76,14 @@ func run(c configuration, l logger.Logger) {
 	sw.AddEvent("First press", "")
 
 	// Write
-	vk.Write("Salut Quentin, tu vas bien ?")
+	vk.Write("Bonjour Quentin, comment vas-tu ?")
 	sw.AddEvent("Second press", "")
 
 	// Open Explorer
-	fmt.Println(exec.Command("cmd", "/C explorer .").Output())
+	//exec.Command("cmd", "/C explorer .").Output()
 
 	//>> TESTS END HERE <<\\
 
 	// Log stopwatch
-	l.Info(sw.String())
+	l.Info("Done")
 }
