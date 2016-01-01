@@ -7,8 +7,9 @@ import (
 	"github.com/asticode/go-logger/logger"
 	"github.com/asticode/go-stopwatch/stopwatch"
 	extendederror "github.com/asticode/go-toolbox/error"
-	"github.com/asticode/go-keyboardemulator/keyboardemulator"
+	_ "github.com/asticode/go-keyboardemulator/keyboardemulator"
 	_ "os/exec"
+	"github.com/asticode/go-texttospeech/texttospeech"
 )
 
 func main() {
@@ -57,6 +58,7 @@ func run(c configuration, l logger.Logger) {
 
 	//>> TESTS BEGIN HERE <<\\
 
+	/*
 	// Create keyboard emulator
 	vk := keyboardemulator.NewKeyboardEmulator().SetAddRealLifeDelayBetweenPresses(true)
 
@@ -80,7 +82,14 @@ func run(c configuration, l logger.Logger) {
 	sw.AddEvent("Second press", "")
 
 	// Open Explorer
-	//exec.Command("cmd", "/C explorer .").Output()
+	exec.Command("cmd", "/C explorer .").Output()
+	*/
+
+	// Create text to speech
+	tts := texttospeech.NewTextToSpeech()
+
+	// Say
+	tts.Say("Hello Quentin, my name is Bob")
 
 	//>> TESTS END HERE <<\\
 
