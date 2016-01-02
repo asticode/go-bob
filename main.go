@@ -89,7 +89,7 @@ func run(c configuration, l logger.Logger) {
 	tts := texttospeech.NewTextToSpeech()
 
 	// Say
-	tts.Say("go-texttospeech is awesome!")
+	tts.Say("Good morning sir, how may I help you today?")
 
 	//>> TESTS END HERE <<\\
 

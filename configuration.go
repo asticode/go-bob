@@ -29,7 +29,9 @@ func newConfiguration(cp string) *configuration {
 	c.parseGlobalConfiguration()
 
 	// Parse local configuration
-	c.parseLocalConfiguration(cp)
+	if len(cp) > 0 {
+		c.parseLocalConfiguration(cp)
+	}
 
 	// Update max number of procs
 	runtime.GOMAXPROCS(c.getMaxNumberOfProcs(c.Bob.MaxNumberOfProcs))
